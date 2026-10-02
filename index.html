@@ -1,1 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>CROSSNIC — Creative Studio</title>
+
+    <meta name="description" content="CROSSNIC — Creative Studio. Films, fantasy, cosplay, art and original worlds.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #050505;
+            color: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* NAVIGATION */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 25px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.85),
+                transparent
+            );
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 7px;
+        }
+
+        nav {
+            display: flex;
+            gap: 35px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.55;
+        }
+
+        /* HERO */
+
+        .hero {
+            height: 100vh;
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 70% 45%,
+                    rgba(80, 80, 110, 0.28),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 30% 70%,
+                    rgba(120, 30, 80, 0.15),
+                    transparent 35%
+                ),
+                #050505;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(0,0,0,0.95) 0%,
+                    rgba(0,0,0,0.65) 40%,
+                    rgba(0,0,0,0.15) 100%
+                );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 8%;
+            max-width: 900px;
+        }
+
+        .small-title {
+            font-size: 12px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            opacity: 0.6;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(70px, 12vw, 170px);
+            line-height: 0.85;
+            letter-spacing: 8px;
+            font-weight: 800;
+        }
+
+        .hero h2 {
+            margin-top: 30px;
+            font-size: clamp(18px, 2vw, 28px);
+            font-weight: 300;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        .hero-description {
+            max-width: 550px;
+            margin-top: 25px;
+            color: #bcbcbc;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 16px 28px;
+            border: 1px solid rgba(255,255,255,0.6);
+            color: white;
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: white;
+            color: black;
+        }
+
+        .button.primary {
+            background: white;
+            color: black;
+        }
+
+        .button.primary:hover {
+            background: transparent;
+            color: white;
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 120px 8%;
+        }
+
+        .section-label {
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: clamp(40px, 6vw, 80px);
+            font-weight: 700;
+            letter-spacing: -2px;
+            margin-bottom: 60px;
+        }
+
+        /* PROJECTS */
+
+        .projects {
+            background: #080808;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project {
+            min-height: 420px;
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(
+                    135deg,
+                    #191919,
+                    #080808
+                );
+            display: flex;
+            align-items: flex-end;
+            transition: 0.5s;
+        }
+
+        .project:hover {
+            transform: scale(0.985);
+        }
+
+        .project::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(
+                    circle at 70% 30%,
+                    rgba(150,100,180,0.25),
+                    transparent 35%
+                );
+        }
+
+        .project-content {
+            position: relative;
+            padding: 40px;
+            width: 100%;
+            background: linear-gradient(
+                to top,
+                rgba(0,0,0,0.9),
+                transparent
+            );
+        }
+
+        .project-year {
+            font-size: 11px;
+            color: #aaa;
+            letter-spacing: 3px;
+        }
+
+        .project h3 {
+            font-size: 30px;
+            margin-top: 12px;
+            max-width: 600px;
+        }
+
+        .project p {
+            margin-top: 12px;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        /* ABOUT */
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .about-text {
+            color: #aaa;
+            font-size: 17px;
+            line-height: 1.9;
+        }
+
+        .about-text strong {
+            color: white;
+        }
+
+        .quote {
+            font-size: clamp(30px, 4vw, 55px);
+            line-height: 1.1;
+            font-weight: 600;
+        }
+
+        /* CASTING */
+
+        .casting {
+            position: relative;
+            background:
+                radial-gradient(
+                    circle at 80% 50%,
+                    rgba(100,40,100,0.22),
+                    transparent 40%
+                ),
+                #070707;
+        }
+
+        .casting-content {
+            max-width: 850px;
+        }
+
+        .casting p {
+            color: #aaa;
+            line-height: 1.8;
+            font-size: 17px;
+            max-width: 700px;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            text-align: center;
+            background: #030303;
+        }
+
+        .contact h2 {
+            font-size: clamp(45px, 8vw, 100px);
+            margin-bottom: 30px;
+        }
+
+        .contact p {
+            color: #888;
+            margin-bottom: 35px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid #222;
+            padding: 40px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #666;
+            font-size: 11px;
+            letter-spacing: 2px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            header {
+                padding: 20px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+
+            .hero-content {
+                padding: 0 7%;
+            }
+
+            .hero h1 {
+                letter-spacing: 3px;
+            }
+
+            section {
+                padding: 80px 7%;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project {
+                min-height: 350px;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        CROSSNIC
+    </div>
+
+    <nav>
+        <a href="#projects">Projects</a>
+        <a href="#studio">Studio</a>
+        <a href="#casting">Casting</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+</header>
+
+
+<main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="small-title">
+                Creative Studio · Azerbaijan
+            </div>
+
+            <h1>
+                CROSSNIC
+            </h1>
+
+            <h2>
+                We Create Worlds.
+            </h2>
+
+            <p class="hero-description">
+                A creative studio dedicated to films, fantasy,
+                visual storytelling, cosplay, art and original worlds.
+                We turn imagination into stories that can be seen,
+                felt and remembered.
+            </p>
+
+            <div class="buttons">
+
+                <a href="#projects" class="button primary">
+                    Explore Projects
+                </a>
+
+                <a href="#casting" class="button">
+                    Join Casting
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+
+    <section class="projects" id="projects">
+
+        <div class="section-label">
+            01 — Selected Works
+        </div>
+
+        <h2 class="section-title">
+            Our Projects
+        </h2>
+
+        <div class="project-grid">
+
+            <article class="project">
+
+                <div class="project-content">
+
+                    <div class="project-year">
+                        2027 · DARK FANTASY
+                    </div>
+
+                    <h3>
+                        Wingless Angels:
+                        Pestilence's Revenge
+                    </h3>
+
+                    <p>
+                        A dark fantasy story about angels,
+                        demons and the forces hidden beyond
+                        the human world.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="project">
+
+                <div class="project-content">
+
+                    <div class="project-year">
+                        2026 · LIVE ACTION
+                    </div>
+
+                    <h3>
+                        Genshin Impact:
+                        The Lantern Rite Festival
+                    </h3>
+
+                    <p>
+                        Part 1 — a live-action cinematic
+                        adaptation created by CROSSNIC.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="project">
+
+                <div class="project-content">
+
+                    <div class="project-year">
+                        2025 · DRAMA
+                    </div>
+
+                    <h3>
+                        Burning Jealousy
+                    </h3>
+
+                    <p>
+                        An original CROSSNIC production.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="project">
+
+                <div class="project-content">
+
+                    <div class="project-year">
+                        ORIGINAL SERIES
+                    </div>
+
+                    <h3>
+                        Azora
+                    </h3>
+
+                    <p>
+                        A girl. A world of masked creatures.
+                        And an endless journey through different worlds.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- STUDIO -->
+
+    <section id="studio">
+
+        <div class="section-label">
+            02 — The Studio
+        </div>
+
+        <div class="about">
+
+            <div>
+
+                <div class="quote">
+                    Imagination
+                    deserves a world
+                    of its own.
+                </div>
+
+            </div>
+
+            <div class="about-text">
+
+                <p>
+                    <strong>CROSSNIC</strong> is an independent
+                    creative studio focused on cinematic storytelling,
+                    fantasy and visual worlds.
+                </p>
+
+                <br>
+
+                <p>
+                    We develop films, series, characters,
+                    costumes, visual concepts and creative projects
+                    designed to bring imaginary worlds into reality.
+                </p>
+
+                <br>
+
+                <p>
+                    Our goal is simple:
+                    <strong>create worlds that people can enter.</strong>
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CASTING -->
+
+    <section class="casting" id="casting">
+
+        <div class="casting-content">
+
+            <div class="section-label">
+                03 — Casting
+            </div>
+
+            <h2 class="section-title">
+                Your Story
+                Starts Here.
+            </h2>
+
+            <p>
+                CROSSNIC opens opportunities for actors,
+                cosplayers, artists, costume makers and other
+                creative people who want to become part of
+                future productions.
+            </p>
+
+            <br>
+
+            <p>
+                We believe that everyone deserves a chance
+                to show what they can do. Our casting process
+                is open to people who want to develop their
+                skills, gain experience and bring their ideas
+                to the screen.
+            </p>
+
+            <div class="buttons">
+
+                <a href="#contact" class="button primary">
+                    Apply for Casting
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section class="contact" id="contact">
+
+        <div class="section-label">
+            04 — Contact
+        </div>
+
+        <h2>
+            Let's Create.
+        </h2>
+
+        <p>
+            CROSSNIC · Creative Studio
+        </p>
+
+        <a
+            href="mailto:crossnicstudio@gmail.com"
+            class="button"
+        >
+            Contact Studio
+        </a>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div>
+        © 2026 CROSSNIC
+    </div>
+
+    <div>
+        CREATIVE STUDIO
+    </div>
+
+</footer>
+
+</body>
+</html>
