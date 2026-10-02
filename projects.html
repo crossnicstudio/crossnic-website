@@ -1,629 +1,698 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Projects — CROSSNIC</title>
-
-    <meta name="description" content="CROSSNIC Creative Studio — Films, series and original worlds.">
-
-    <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: #050505;
-            color: #ffffff;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        /* HEADER */
-
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 100;
-            padding: 25px 50px;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            background: rgba(0,0,0,0.75);
-            backdrop-filter: blur(12px);
-        }
-
-        .logo {
-            color: white;
-            text-decoration: none;
-            font-size: 25px;
-            font-weight: 800;
-            letter-spacing: 7px;
-        }
-
-        nav {
-            display: flex;
-            gap: 35px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            opacity: 0.8;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            opacity: 1;
-        }
-
-        /* HERO */
-
-        .page-hero {
-            min-height: 65vh;
-            padding: 180px 8% 100px;
-
-            display: flex;
-            align-items: flex-end;
-
-            background:
-                radial-gradient(
-                    circle at 70% 30%,
-                    rgba(100,70,120,0.22),
-                    transparent 40%
-                ),
-                radial-gradient(
-                    circle at 20% 70%,
-                    rgba(70,30,70,0.15),
-                    transparent 40%
-                ),
-                #050505;
-        }
-
-        .page-label {
-            color: #888;
-            font-size: 11px;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-        }
-
-        .page-hero h1 {
-            font-size: clamp(65px, 11vw, 150px);
-            line-height: 0.85;
-            letter-spacing: 5px;
-        }
-
-        .page-hero p {
-            max-width: 650px;
-            margin-top: 35px;
-            color: #999;
-            line-height: 1.8;
-            font-size: 16px;
-        }
-
-        /* PROJECTS */
-
-        .projects {
-            padding: 100px 8% 140px;
-            background: #080808;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-
-        .project {
-            position: relative;
-            min-height: 520px;
-            overflow: hidden;
-
-            display: flex;
-            align-items: flex-end;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #202020,
-                    #090909
-                );
-
-            border: 1px solid #202020;
-
-            transition: transform 0.5s,
-                        border-color 0.5s;
-        }
-
-        .project:hover {
-            transform: translateY(-8px);
-            border-color: #555;
-        }
-
-        .project::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-
-            background:
-                radial-gradient(
-                    circle at 75% 25%,
-                    rgba(170,100,180,0.25),
-                    transparent 35%
-                );
-        }
-
-        .project::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-
-            background:
-                linear-gradient(
-                    to top,
-                    rgba(0,0,0,0.95),
-                    rgba(0,0,0,0.05) 70%
-                );
-        }
-
-        .project-content {
-            position: relative;
-            z-index: 2;
-            padding: 45px;
-            width: 100%;
-        }
-
-        .project-number {
-            font-size: 11px;
-            letter-spacing: 4px;
-            color: #888;
-        }
-
-        .project-year {
-            margin-top: 8px;
-            font-size: 11px;
-            color: #aaa;
-            letter-spacing: 2px;
-        }
-
-        .project h2 {
-            margin-top: 18px;
-            font-size: clamp(28px, 3vw, 45px);
-            line-height: 1.05;
-            max-width: 700px;
-        }
-
-        .project-type {
-            margin-top: 15px;
-            color: #aaa;
-            font-size: 13px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .project-description {
-            margin-top: 20px;
-            max-width: 600px;
-            color: #aaa;
-            line-height: 1.7;
-            font-size: 14px;
-        }
-
-        .project-button {
-            display: inline-block;
-            margin-top: 28px;
-
-            padding: 13px 22px;
-
-            border: 1px solid rgba(255,255,255,0.6);
-
-            color: white;
-            text-decoration: none;
-
-            font-size: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-
-            transition: 0.3s;
-        }
-
-        .project-button:hover {
-            background: white;
-            color: black;
-        }
-
-        /* FEATURED */
-
-        .featured {
-            grid-column: span 2;
-            min-height: 650px;
-        }
-
-        .featured h2 {
-            font-size: clamp(35px, 5vw, 70px);
-        }
-
-        /* FOOTER */
-
-        footer {
-            padding: 40px 8%;
-
-            border-top: 1px solid #222;
-
-            display: flex;
-            justify-content: space-between;
-
-            color: #666;
-
-            font-size: 10px;
-            letter-spacing: 2px;
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 800px) {
-
-            header {
-                padding: 20px;
-            }
-
-            nav {
-                display: none;
-            }
-
-            .page-hero {
-                padding: 150px 7% 80px;
-            }
-
-            .projects {
-                padding: 70px 7% 100px;
-            }
-
-            .project-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .featured {
-                grid-column: span 1;
-            }
-
-            .project {
-                min-height: 430px;
-            }
-
-            .project-content {
-                padding: 30px;
-            }
-
-            footer {
-                flex-direction: column;
-                gap: 20px;
-            }
-        }
-
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Projects — CROSSNIC</title>
+
+<meta name="description" content="CROSSNIC Creative Studio — Films, series and original worlds.">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #070707;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* HEADER */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(7,7,7,0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.nav {
+    max-width: 1400px;
+    margin: auto;
+    padding: 22px 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 6px;
+}
+
+.menu {
+    display: flex;
+    gap: 30px;
+}
+
+.menu a {
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #aaa;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    color: #fff;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 55vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(circle at center, rgba(70,70,90,0.22), transparent 45%),
+        #070707;
+}
+
+.hero h1 {
+    font-size: clamp(60px, 10vw, 150px);
+    letter-spacing: 15px;
+    font-weight: 300;
+}
+
+.hero p {
+    margin-top: 20px;
+    color: #888;
+    letter-spacing: 5px;
+    font-size: 13px;
+}
+
+/* SECTIONS */
+
+.section {
+    max-width: 1400px;
+    margin: auto;
+    padding: 100px 40px;
+}
+
+.section-title {
+    font-size: 42px;
+    font-weight: 300;
+    letter-spacing: 5px;
+    margin-bottom: 15px;
+}
+
+.section-subtitle {
+    color: #777;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 55px;
+}
+
+/* PROJECT GRID */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+}
+
+/* PROJECT CARD */
+
+.project {
+    position: relative;
+    overflow: hidden;
+    background: #111;
+    border: 1px solid rgba(255,255,255,0.08);
+
+    transition:
+        transform 0.4s ease,
+        border-color 0.4s ease;
+}
+
+.project:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255,255,255,0.35);
+}
+
+.project-image {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    display: block;
+
+    transition:
+        transform 0.6s ease,
+        filter 0.6s ease;
+}
+
+.project:hover .project-image {
+    transform: scale(1.04);
+    filter: brightness(0.7);
+}
+
+.project-info {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding: 35px 25px 25px;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0,0,0,0.95)
+        );
+}
+
+.project-title {
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+.project-year {
+    margin-top: 8px;
+    color: #aaa;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+/* UPCOMING */
+
+.upcoming {
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.upcoming .project-image {
+    filter: saturate(0.65);
+}
+
+.upcoming-label {
+    display: inline-block;
+    margin-bottom: 12px;
+
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    color: #c8a8ff;
+}
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid rgba(255,255,255,0.08);
+
+    padding: 50px 40px;
+
+    text-align: center;
+
+    color: #666;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nav {
+        padding: 20px;
+    }
+
+    .menu {
+        gap: 15px;
+    }
+
+    .menu a {
+        font-size: 10px;
+    }
+
+    .section {
+        padding: 70px 20px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        letter-spacing: 8px;
+    }
+
+    .menu {
+        display: none;
+    }
+
+}
+
+</style>
 </head>
 
 <body>
 
 <header>
 
-    <a href="index.html" class="logo">
-        CROSSNIC
-    </a>
+    <nav class="nav">
 
-    <nav>
-
-        <a href="index.html">
-            Home
+        <a href="index.html" class="logo">
+            CROSSNIC
         </a>
 
-        <a href="projects.html">
-            Projects
-        </a>
+        <div class="menu">
 
-        <a href="index.html#studio">
-            Studio
-        </a>
+            <a href="#projects">
+                Projects
+            </a>
 
-        <a href="index.html#casting">
-            Casting
-        </a>
+            <a href="#upcoming">
+                Upcoming Projects
+            </a>
 
-        <a href="index.html#contact">
-            Contact
-        </a>
+            <a href="index.html#studio">
+                Studio
+            </a>
+
+            <a href="index.html#casting">
+                Casting
+            </a>
+
+            <a href="index.html#contact">
+                Contact
+            </a>
+
+        </div>
 
     </nav>
 
 </header>
 
 
-<main>
+<section class="hero">
 
-    <!-- PAGE INTRO -->
+    <div>
 
-    <section class="page-hero">
+        <h1>PROJECTS</h1>
 
-        <div>
+        <p>
+            STORIES • FILMS • WORLDS
+        </p>
 
-            <div class="page-label">
-                CROSSNIC · 01
+    </div>
+
+</section>
+
+
+<!-- MAIN PROJECTS -->
+
+<section class="section" id="projects">
+
+    <h2 class="section-title">
+        PROJECTS
+    </h2>
+
+    <p class="section-subtitle">
+        Selected works by CROSSNIC
+    </p>
+
+
+    <div class="projects-grid">
+
+
+        <!-- THE WORLD OF GEMS -->
+
+        <a href="world-of-gems.html" class="project">
+
+            <img
+                src="5.%20The%20World%20of%20Gems%20%28Season%201%29.png"
+                alt="The World of Gems — Season 1"
+                class="project-image"
+            >
+
+            <div class="project-info">
+
+                <div class="project-title">
+                    The World of Gems
+                </div>
+
+                <div class="project-year">
+                    SEASON 1
+                </div>
+
             </div>
 
-            <h1>
-                PROJECTS
-            </h1>
-
-            <p>
-                Films, series and original worlds created by
-                CROSSNIC. Every project begins as an idea and
-                becomes a world of its own.
-            </p>
-
-        </div>
-
-    </section>
+        </a>
 
 
-    <!-- PROJECT LIST -->
+        <!-- LOVE BRINGS COLORS -->
 
-    <section class="projects">
+        <a href="love-brings-colors.html" class="project">
 
-        <div class="project-grid">
+            <img
+                src="6.%20Love%20Brings%20Colors%20%282022%29.png"
+                alt="Love Brings Colors"
+                class="project-image"
+            >
 
+            <div class="project-info">
 
-            <!-- PROJECT 01 -->
-
-            <article class="project featured">
-
-                <div class="project-content">
-
-                    <div class="project-number">
-                        PROJECT 01
-                    </div>
-
-                    <div class="project-year">
-                        2027
-                    </div>
-
-                    <h2>
-                        Wingless Angels:
-                        Pestilence's Revenge
-                    </h2>
-
-                    <div class="project-type">
-                        Dark Fantasy · Feature / Film Project
-                    </div>
-
-                    <p class="project-description">
-                        A dark fantasy world where angels,
-                        demons and mysterious forces collide.
-                        The story explores the boundary between
-                        humanity and the supernatural.
-                    </p>
-
-                    <a href="#" class="project-button">
-                        View Project
-                    </a>
-
+                <div class="project-title">
+                    Love Brings Colors
                 </div>
 
-            </article>
-
-
-            <!-- PROJECT 02 -->
-
-            <article class="project">
-
-                <div class="project-content">
-
-                    <div class="project-number">
-                        PROJECT 02
-                    </div>
-
-                    <div class="project-year">
-                        2026
-                    </div>
-
-                    <h2>
-                        Genshin Impact:
-                        The Lantern Rite Festival
-                    </h2>
-
-                    <div class="project-type">
-                        Live Action · Part 1
-                    </div>
-
-                    <p class="project-description">
-                        A live-action cinematic project inspired
-                        by the world of Genshin Impact and the
-                        Lantern Rite Festival.
-                    </p>
-
-                    <a href="#" class="project-button">
-                        View Project
-                    </a>
-
+                <div class="project-year">
+                    2022
                 </div>
 
-            </article>
+            </div>
+
+        </a>
 
 
-            <!-- PROJECT 03 -->
+        <!-- SUMGAIT MUSIC SCHOOL -->
 
-            <article class="project">
+        <a href="sumgait-music-school.html" class="project">
 
-                <div class="project-content">
+            <img
+                src="7.%20Sumqayit%20Musiqi%20Mektebi%20N%C2%BA1%20%282023%29.png"
+                alt="Sumgait: Music School №1"
+                class="project-image"
+            >
 
-                    <div class="project-number">
-                        PROJECT 03
-                    </div>
+            <div class="project-info">
 
-                    <div class="project-year">
-                        2025
-                    </div>
-
-                    <h2>
-                        Burning Jealousy
-                    </h2>
-
-                    <div class="project-type">
-                        Original Film
-                    </div>
-
-                    <p class="project-description">
-                        An original CROSSNIC production.
-                    </p>
-
-                    <a href="#" class="project-button">
-                        View Project
-                    </a>
-
+                <div class="project-title">
+                    Sumgait: Music School №1
                 </div>
 
-            </article>
-
-
-            <!-- PROJECT 04 -->
-
-            <article class="project">
-
-                <div class="project-content">
-
-                    <div class="project-number">
-                        PROJECT 04
-                    </div>
-
-                    <div class="project-year">
-                        SERIES
-                    </div>
-
-                    <h2>
-                        Azora
-                    </h2>
-
-                    <div class="project-type">
-                        Fantasy · Science Fiction · Series
-                    </div>
-
-                    <p class="project-description">
-                        A girl trapped in a mysterious world of
-                        masked creatures discovers masks capable
-                        of transporting her between different worlds.
-                    </p>
-
-                    <a href="#" class="project-button">
-                        View Project
-                    </a>
-
+                <div class="project-year">
+                    2023
                 </div>
 
-            </article>
+            </div>
+
+        </a>
 
 
-            <!-- PROJECT 05 -->
+        <!-- BURNING JEALOUSY -->
 
-            <article class="project">
+        <a href="burning-jealousy.html" class="project">
 
-                <div class="project-content">
+            <img
+                src="Poster%20final.png"
+                alt="Burning Jealousy"
+                class="project-image"
+            >
 
-                    <div class="project-number">
-                        PROJECT 05
-                    </div>
+            <div class="project-info">
 
-                    <div class="project-year">
-                        2023
-                    </div>
-
-                    <h2>
-                        Sumgait:
-                        Music School №1
-                    </h2>
-
-                    <div class="project-type">
-                        Documentary
-                    </div>
-
-                    <p class="project-description">
-                        An earlier CROSSNIC production.
-                    </p>
-
-                    <a href="#" class="project-button">
-                        View Project
-                    </a>
-
+                <div class="project-title">
+                    Burning Jealousy
                 </div>
 
-            </article>
-
-
-            <!-- PROJECT 06 -->
-
-            <article class="project">
-
-                <div class="project-content">
-
-                    <div class="project-number">
-                        PROJECT 06
-                    </div>
-
-                    <div class="project-year">
-                        2022
-                    </div>
-
-                    <h2>
-                        Love Brings Colors
-                    </h2>
-
-                    <div class="project-type">
-                        Original Film
-                    </div>
-
-                    <p class="project-description">
-                        An original CROSSNIC project.
-                    </p>
-
-                    <a href="#" class="project-button">
-                        View Project
-                    </a>
-
+                <div class="project-year">
+                    2025
                 </div>
 
-            </article>
+            </div>
+
+        </a>
 
 
-        </div>
+        <!-- GENSHIN IMPACT -->
 
-    </section>
+        <a href="genshin-lantern-rite.html" class="project">
 
-</main>
+            <img
+                src="Poster%20finla%20with%20lanters%202.png"
+                alt="Genshin Impact: The Lantern Rite Festival — Part 1"
+                class="project-image"
+            >
+
+            <div class="project-info">
+
+                <div class="project-title">
+                    Genshin Impact: The Lantern Rite Festival
+                </div>
+
+                <div class="project-year">
+                    PART 1 • 2026
+                </div>
+
+            </div>
+
+        </a>
+
+
+    </div>
+
+</section>
+
+
+<!-- UPCOMING PROJECTS -->
+
+<section class="section upcoming" id="upcoming">
+
+    <h2 class="section-title">
+        UPCOMING PROJECTS
+    </h2>
+
+    <p class="section-subtitle">
+        Worlds currently in development
+    </p>
+
+
+    <div class="projects-grid">
+
+
+        <!-- WINGLESS ANGELS -->
+
+        <a href="wingless-angels.html" class="project">
+
+            <img
+                src="%D0%A1%D1%83%D0%BF%D0%B5%D1%80-%D0%BD%D0%BE%D0%B2%D1%8B%D0%B9.png"
+                alt="Wingless Angels: Pestilence's Revenge"
+                class="project-image"
+            >
+
+            <div class="project-info">
+
+                <span class="upcoming-label">
+                    Upcoming • 2027
+                </span>
+
+                <div class="project-title">
+                    Wingless Angels:
+                    Pestilence's Revenge
+                </div>
+
+                <div class="project-year">
+                    2027
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <!-- COSPLAY JOURNEY -->
+
+        <a href="cosplay-journey.html" class="project">
+
+            <div
+                class="project-image"
+                style="
+                    background:
+                    linear-gradient(
+                        135deg,
+                        #151515,
+                        #292929
+                    );
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    color:#777;
+                    font-size:12px;
+                    letter-spacing:3px;
+                "
+            >
+                COMING SOON
+            </div>
+
+            <div class="project-info">
+
+                <span class="upcoming-label">
+                    Upcoming • Documentary
+                </span>
+
+                <div class="project-title">
+                    Hattab Crossnic:
+                    The Cosplay Journey
+                </div>
+
+                <div class="project-year">
+                    2027 • DOCUMENTARY
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <!-- BOOTHILL -->
+
+        <a href="boothill-catch-me-if-you-can.html" class="project">
+
+            <div
+                class="project-image"
+                style="
+                    background:
+                    linear-gradient(
+                        135deg,
+                        #101010,
+                        #38291e
+                    );
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    color:#777;
+                    font-size:12px;
+                    letter-spacing:3px;
+                "
+            >
+                COMING SOON
+            </div>
+
+            <div class="project-info">
+
+                <span class="upcoming-label">
+                    Upcoming
+                </span>
+
+                <div class="project-title">
+                    Boothill:
+                    Catch Me If You Can
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <!-- SAINT GATE -->
+
+        <a href="saint-gate-anomalies.html" class="project">
+
+            <div
+                class="project-image"
+                style="
+                    background:
+                    linear-gradient(
+                        135deg,
+                        #0b0b12,
+                        #202038
+                    );
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    color:#777;
+                    font-size:12px;
+                    letter-spacing:3px;
+                "
+            >
+                COMING SOON
+            </div>
+
+            <div class="project-info">
+
+                <span class="upcoming-label">
+                    Upcoming
+                </span>
+
+                <div class="project-title">
+                    Saint Gate:
+                    Anomalies
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <!-- THE INVITED -->
+
+        <a href="the-invited.html" class="project">
+
+            <div
+                class="project-image"
+                style="
+                    background:
+                    linear-gradient(
+                        135deg,
+                        #0c0c0c,
+                        #241a1a
+                    );
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    color:#777;
+                    font-size:12px;
+                    letter-spacing:3px;
+                "
+            >
+                COMING SOON
+            </div>
+
+            <div class="project-info">
+
+                <span class="upcoming-label">
+                    Upcoming
+                </span>
+
+                <div class="project-title">
+                    The Invited
+                </div>
+
+            </div>
+
+        </a>
+
+
+    </div>
+
+</section>
 
 
 <footer>
 
-    <div>
-        © 2026 CROSSNIC
-    </div>
-
-    <div>
-        CREATIVE STUDIO
-    </div>
+    © CROSSNIC CREATIVE STUDIO
 
 </footer>
 
