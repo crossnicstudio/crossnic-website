@@ -398,7 +398,166 @@
                 text-align: center;
             }
         }
-    </style>
+/* ================================
+   PROJECTS — CINEMATIC HORIZONTAL REEL
+   ================================ */
+
+.projects {
+    position: relative;
+    overflow: hidden;
+}
+
+.projects-carousel {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    overflow: hidden;
+    padding: 20px 0 35px;
+}
+
+.projects-track {
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    padding: 0 7vw;
+    transition: transform 0.15s ease-out;
+    will-change: transform;
+}
+
+.project-card {
+    flex: 0 0 230px;
+    width: 230px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.project-poster {
+    position: relative;
+    width: 230px;
+    height: 330px;
+    overflow: hidden;
+    background: #111;
+    border-radius: 2px;
+}
+
+.project-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.project-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 22px;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.95) 0%,
+        rgba(0,0,0,0.45) 42%,
+        transparent 75%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.project-overlay span {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-bottom: 8px;
+}
+
+.project-overlay h3 {
+    margin: 0;
+    font-size: 20px;
+    line-height: 1.15;
+    font-weight: 500;
+}
+
+.project-overlay p {
+    margin: 7px 0 0;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+.project-card:hover .project-poster img {
+    transform: scale(1.06);
+    filter: brightness(0.7);
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+/* Soft cinematic edges */
+.projects-fade-left,
+.projects-fade-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 10vw;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.projects-fade-left {
+    left: 0;
+    background: linear-gradient(
+        to right,
+        #080808,
+        transparent
+    );
+}
+
+.projects-fade-right {
+    right: 0;
+    background: linear-gradient(
+        to left,
+        #080808,
+        transparent
+    );
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+
+    .projects-track {
+        gap: 16px;
+        padding: 0 20px;
+    }
+
+    .project-card {
+        flex-basis: 185px;
+        width: 185px;
+    }
+
+    .project-poster {
+        width: 185px;
+        height: 270px;
+    }
+
+    .project-overlay {
+        opacity: 1;
+        padding: 15px;
+    }
+
+    .project-overlay h3 {
+        font-size: 16px;
+    }
+
+    .projects-fade-left,
+    .projects-fade-right {
+        width: 35px;
+    }
+}    </style>
 </head>
 
 <body>
@@ -474,109 +633,72 @@
         Selected Projects
     </h2>
 
-    <div class="project-grid">
+    <div class="projects-carousel">
 
-        <article class="project">
-            <div class="project-content">
+        <div class="projects-track">
 
-                <div class="project-year">
-                    SEASON 1
+            <!-- Genshin Impact -->
+            <a href="projects.html" class="project-card">
+                <div class="project-poster">
+                    <img src="Poster%20finla%20with%20lanters%202.png" alt="Genshin Impact: The Lantern Rite Festival">
+                    <div class="project-overlay">
+                        <span>2026 · LIVE ACTION</span>
+                        <h3>Genshin Impact:<br>The Lantern Rite Festival</h3>
+                        <p>Part 1</p>
+                    </div>
                 </div>
+            </a>
 
-                <h3>
-                    The World of Gems
-                </h3>
-
-                <p>
-                    One of the first CROSSNIC projects — a fantasy world
-                    created around mystery, imagination and adventure.
-                </p>
-
-            </div>
-        </article>
-
-
-        <article class="project">
-            <div class="project-content">
-
-                <div class="project-year">
-                    2022 · FILM
+            <!-- Burning Jealousy -->
+            <a href="projects.html" class="project-card">
+                <div class="project-poster">
+                    <img src="Poster%20final.png" alt="Burning Jealousy">
+                    <div class="project-overlay">
+                        <span>2025 · DRAMA</span>
+                        <h3>Burning<br>Jealousy</h3>
+                    </div>
                 </div>
+            </a>
 
-                <h3>
-                    Love Brings Colors
-                </h3>
-
-                <p>
-                    A CROSSNIC story about emotions, connection and
-                    the colors that appear when people find each other.
-                </p>
-
-            </div>
-        </article>
-
-
-        <article class="project">
-            <div class="project-content">
-
-                <div class="project-year">
-                    2023 · DOCUMENTARY
+            <!-- Sumgait -->
+            <a href="projects.html" class="project-card">
+                <div class="project-poster">
+                    <img src="7.%20Sumqayit%20Musiqi%20Mektebi%20%E2%84%961%20%282023%29.png" alt="Sumgait Music School №1">
+                    <div class="project-overlay">
+                        <span>2023 · DOCUMENTARY</span>
+                        <h3>Sumgait:<br>Music School №1</h3>
+                    </div>
                 </div>
+            </a>
 
-                <h3>
-                    Sumgait: Music School №1
-                </h3>
-
-                <p>
-                    A CROSSNIC documentary project dedicated to music
-                    and the people behind it.
-                </p>
-
-            </div>
-        </article>
-
-
-        <article class="project">
-            <div class="project-content">
-
-                <div class="project-year">
-                    2025 · DRAMA
+            <!-- Love Brings Colors -->
+            <a href="projects.html" class="project-card">
+                <div class="project-poster">
+                    <img src="6.%20Love%20Brings%20Colors%20%282022%29.png" alt="Love Brings Colors">
+                    <div class="project-overlay">
+                        <span>2022 · FILM</span>
+                        <h3>Love Brings<br>Colors</h3>
+                    </div>
                 </div>
+            </a>
 
-                <h3>
-                    Burning Jealousy
-                </h3>
-
-                <p>
-                    A CROSSNIC film exploring jealousy, emotion
-                    and the consequences of desire.
-                </p>
-
-            </div>
-        </article>
-
-
-        <article class="project">
-            <div class="project-content">
-
-                <div class="project-year">
-                    2026 · LIVE ACTION
+            <!-- The World of Gems -->
+            <a href="world-of-gems.html" class="project-card">
+                <div class="project-poster">
+                    <img src="5.%20The%20World%20of%20Gems%20%28Season%201%29.png" alt="The World of Gems">
+                    <div class="project-overlay">
+                        <span>2019 · SEASON 1</span>
+                        <h3>The World<br>of Gems</h3>
+                    </div>
                 </div>
+            </a>
 
-                <h3>
-                    Genshin Impact: The Lantern Rite Festival
-                </h3>
-
-                <p>
-                    Part 1 — A live-action fantasy film inspired
-                    by the world of Genshin Impact.
-                </p>
-
-            </div>
-        </article>
+        </div>
 
     </div>
 
+    <div class="projects-fade-left"></div>
+    <div class="projects-fade-right"></div>
 
     <div style="margin-top: 50px;">
         <a href="projects.html" class="button">
